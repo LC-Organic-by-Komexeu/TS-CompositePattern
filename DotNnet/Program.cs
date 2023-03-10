@@ -5,26 +5,26 @@
         static void Main(string[] args)
         {
             // 建立根節點
-            Composite root = new Composite("root");
+            var root = new Branch("root");
             root.add(new Leaf("Leaf A"));
             root.add(new Leaf("Leaf B"));
 
             // 建立第二層節點
-            Composite branch = new Composite("branch");
+            var branch = new Branch("branch");
             branch.add(new Leaf("branch BX"));
             branch.add(new Leaf("branch BY"));
             root.add(branch);
 
             // 建立第三層節點
-            Composite branch2 = new Composite("branch2");
+            var branch2 = new Branch("branch2");
             branch2.add(new Leaf("branch2 BBX"));
             branch2.add(new Leaf("branch2 BBY"));
             root.add(branch2);
 
             // 葉子節點操作
-            Composite branch3 = new Composite("branch3");
-            Leaf leaf = new Leaf("Leaf L");
-            Leaf leaf1 = new Leaf("Leaf L1");
+            var branch3 = new Branch("branch3");
+            var leaf = new Leaf("Leaf L");
+            var leaf1 = new Leaf("Leaf L1");
             leaf.add(leaf1);
             leaf.delete(leaf1);
             branch3.add(leaf);
@@ -92,10 +92,10 @@
     /// <summary>
     /// 樹構件
     /// </summary>
-    public class Composite : Component
+    public class Branch : Component
     {
         protected List<Component> _children = new List<Component>();
-        public Composite(string name) : base(name)
+        public Branch(string name) : base(name)
         { }
 
         public override void add(Component component)
